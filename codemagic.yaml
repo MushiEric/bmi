@@ -7,12 +7,12 @@ workflows:
     scripts:
       - name: Get Flutter Dependencies
         script: flutter pub get
-      # - name: Run Tests
-      #   script: flutter test  # <-- This is removed to avoid errors
+      - name: Clean Previous Build (Fix Issues)
+        script: flutter clean  # Clears old build files
       - name: Build APK
-        script: flutter build apk --release
+        script: flutter build apk --release --verbose
       - name: Build AAB
-        script: flutter build appbundle
+        script: flutter build appbundle --verbose
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
       - build/app/outputs/bundle/release/app-release.aab
