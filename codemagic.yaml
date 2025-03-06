@@ -1,0 +1,19 @@
+workflows:
+  flutter-android:
+    name: Build Flutter App (Android)
+    instance_type: linux
+    max_build_duration: 60
+    environment:
+      flutter: stable
+    scripts:
+      - name: Get Flutter Dependencies
+        script: flutter pub get
+      - name: Run Tests
+        script: flutter test
+      - name: Build APK
+        script: flutter build apk --release
+      - name: Build AAB
+        script: flutter build appbundle
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/bundle/release/app-release.aab
